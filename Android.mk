@@ -1,10 +1,3 @@
-BUILD_VOLD2 := false
-ifneq ($(TARGET_SIMULATOR),true)
-    BUILD_VOLD2 := true
-endif
-
-ifeq ($(BUILD_VOLD2),true)
-
 LOCAL_PATH:= $(call my-dir)
 
 common_src_files := \
@@ -32,6 +25,7 @@ common_c_includes := \
 common_shared_libraries := \
 	libsysutils \
 	libcutils \
+	liblog \
 	libdiskconfig \
 	libcrypto
 
@@ -96,5 +90,3 @@ LOCAL_C_INCLUDES := $(KERNEL_HEADERS)
 LOCAL_SHARED_LIBRARIES := libcutils
 
 include $(BUILD_EXECUTABLE)
-
-endif # ifeq ($(BUILD_VOLD,true)
